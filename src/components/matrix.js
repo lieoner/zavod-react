@@ -2,10 +2,9 @@ import React from 'react';
 
 const getColSum = matrix => {
     let sumRow = [];
-    for (let i = 0; i < matrix.length; i++) {
-        let row = matrix[i];
+    for (let i = 0; i < matrix[0].length; i++) {
         let sum = 0;
-        for (let j = 0; j < row.length; j++) {
+        for (let j = 0; j < matrix.length; j++) {
             sum += matrix[j][i];
         }
         sumRow.push(sum);
@@ -122,9 +121,9 @@ class OptimQueue {
 
     transp(matrix) {
         let transp_matrix = [];
-        for (let i = 0; i < matrix.length; i++) {
+        for (let i = 0; i < matrix[0].length; i++) {
             const row = [];
-            for (let j = 0; j < matrix[i].length; j++) {
+            for (let j = 0; j < matrix.length; j++) {
                 row.push(matrix[j][i]);
             }
             transp_matrix.push(row);
@@ -159,7 +158,7 @@ class OptimQueue {
 
     getDefQueue() {
         let queue = [];
-        this.matrix.forEach((row, index) => {
+        this.matrix[0].forEach((row, index) => {
             queue.push(index + 1);
         });
         return queue;
@@ -201,24 +200,59 @@ class OptimQueue {
 
     getFourQueue() {
         let queue = [];
-        let sorted_matrix = [];
+        /* let sorted_matrix = [];
         this.matrix.forEach((row, index) => {
             let elements = [];
             elements = this.getElements(row, '');
             sorted_matrix.push(elements);
         });
-
         let transp_matrix = this.transp(sorted_matrix);
+
+        //console.log(transp_matrix);
+
+        //82531764
+        console.log('82531764');
+        console.log(' ');
 
         let elements = [];
         transp_matrix.forEach(row => {
             elements.push(this.getMaxElem(row));
         });
         this.sortByVal(elements, 'desc');
-
         elements.forEach(element => {
             queue.push(element.index);
-        });
+        }); */
+
+        let matrix = this.matrix;
+        let max = 1;
+
+        let maxQueue = [];
+        let x = 0;
+        while (max > 0) {
+            if (max == 1) {
+                max = 0;
+            }
+            for (let i = matrix.length - 1; i >= 0; i--) {
+                const matrRow = matrix[i];
+                //console.log(matrRow);
+                for (let j = matrRow.length - 1; j >= 0; j--) {
+                    const matrElem = matrRow[j];
+                    if (max < matrElem) {
+                        max = matrElem;
+                        for (let k = 0; k < matrix.length; k++) {
+                            matrix[k][j] = 0;
+                        }
+                        maxQueue.push(j + 1);
+                        i = matrix.length - 1;
+                    }
+                }
+            }
+            //console.log(matrix);
+            max--;
+        }
+
+        queue = maxQueue;
+
         return queue;
     }
 
@@ -264,9 +298,8 @@ class OptimQueue {
     calcQueuesDurations(queueNum) {
         const queue = this.queue[queueNum];
         const transp_matrix = this.transp(this.matrix);
-        console.log(transp_matrix);
-        console.log(queue);
-        console.log('');
+        //console.log(queue);
+        //console.log('');
 
         let stonks = [];
 

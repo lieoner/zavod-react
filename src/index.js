@@ -32,13 +32,14 @@ class StankiBegin extends React.Component {
 
         return (
             <div>
-                <Matrix matrix={matrix} title="Детали\Станки" foot={true} />
+                <Matrix matrix={matrix} key="1" title="Детали\Станки" foot={true} />
                 <br />
-                <Matrix matrix={queues} title="Очереди запуска" labels={labels} />
+                <Matrix matrix={queues} key="2" title="Очереди запуска" labels={labels} />
                 <br />
                 <Guant
                     matrix={matrix}
                     queue={queue1}
+                    key="3"
                     title="Очередь по умолчанию"
                     order={queueClass.getQueue(0)}
                 />
@@ -46,6 +47,7 @@ class StankiBegin extends React.Component {
                 <Guant
                     matrix={matrix}
                     queue={queue2}
+                    key="4"
                     title="Оптимизированная очередь"
                     order={queueClass.getQueue(5)}
                 />

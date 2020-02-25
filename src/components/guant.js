@@ -18,7 +18,7 @@ class Guant extends React.Component {
         task_queue.forEach((e, index) => {
             this.colors = randomColor({
                 count: 10,
-                luminosity: 'bright',
+                luminosity: 'light',
             });
         });
 
@@ -46,12 +46,12 @@ class Guant extends React.Component {
                     name: 'Станок ' + i,
                     color: this.colors[index],
                 };
-                /* let link = {
+                let link = {
                     id: i,
                     start: index + 'detal' + i,
                     end: index + 'detal' + (i + 1),
                 };
-                this.links.push(link); */
+                this.links.push(link);
                 this.data.push(task);
             });
         }
