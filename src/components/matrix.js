@@ -223,13 +223,18 @@ class OptimQueue {
             queue.push(element.index);
         }); */
 
-        let matrix = this.matrix;
-        let max = 1;
+        let matrix = this.matrix.map(function func(el) {
+            if (Object.prototype.toString.call(el) === '[object Array]') {
+                return el.map(func);
+            }
+            return el;
+        });
 
+        let max = 1;
         let maxQueue = [];
-        let x = 0;
+
         while (max > 0) {
-            if (max == 1) {
+            if (max === 1) {
                 max = 0;
             }
             for (let i = matrix.length - 1; i >= 0; i--) {
@@ -277,6 +282,7 @@ class OptimQueue {
         elements.forEach(element => {
             queue.push(element.index);
         });
+        //console.log(elements);
         return queue;
     }
 
