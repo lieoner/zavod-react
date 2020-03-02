@@ -38,20 +38,22 @@ class Guant extends React.Component {
                 let task = {
                     id: index + 'detal' + i,
                     start: moment()
-                        .set({ date: 30 + queue.start })
+                        .set({ day: -1 + queue.start })
                         .toDate(),
                     end: moment()
-                        .set({ date: 30 + queue.end })
+                        .set({ day: -1 + queue.end })
                         .toDate(),
-                    name: 'Станок ' + i,
+                    name: 'Станок ' + (i + 1),
                     color: this.colors[index],
                 };
-                let link = {
-                    id: i,
-                    start: index + 'detal' + i,
-                    end: index + 'detal' + (i + 1),
-                };
-                this.links.push(link);
+                if (this.props.use_links) {
+                    let link = {
+                        id: i,
+                        start: index + 'detal' + i,
+                        end: index + 'detal' + (i + 1),
+                    };
+                    this.links.push(link);
+                }
                 this.data.push(task);
             });
         }
