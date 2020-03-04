@@ -9,6 +9,7 @@ import { Guant } from './components/guant.js';
 const matrix = require('./matrix.json');
 
 const use_links = true;
+const flat_mode = false;
 
 class StankiBegin extends React.Component {
     constructor(props) {
@@ -117,5 +118,7 @@ $(document).ready(function() {
             );
         });
     };
-    //flatView(matrix);
+    if (flat_mode) {
+        flatView(matrix);
+    }
 });

@@ -57,9 +57,12 @@ class Guant extends React.Component {
                 this.data.push(task);
             });
         }
+        let lastQueueRow = this.state.queue[this.state.queue.length - 1];
+        let totalTime = 'Время выполнения: ' + lastQueueRow[lastQueueRow.length - 1].end;
         return (
             <div className="app-container">
                 <h1>{this.props.title}</h1>
+                <h2>{totalTime}</h2>
                 {this.legend}
                 <div className="time-line-container">
                     <TimeLine data={this.data} links={this.links} />

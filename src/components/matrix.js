@@ -107,6 +107,18 @@ class OptimQueue {
         }
     }
 
+    getMaxOfMatrix(matrix) {
+        let max = 0;
+        matrix.forEach(row => {
+            row.forEach(element => {
+                if (element > max) {
+                    max = element;
+                }
+            });
+        });
+        return max;
+    }
+
     getElements(arr, type = 'asc') {
         let elements = [];
         arr.forEach((col, index) => {
@@ -230,13 +242,10 @@ class OptimQueue {
             return el;
         });
 
-        let max = 1;
+        let max = this.getMaxOfMatrix(matrix);
         let maxQueue = [];
 
         while (max > 0) {
-            if (max === 1) {
-                max = 0;
-            }
             for (let i = matrix.length - 1; i >= 0; i--) {
                 const matrRow = matrix[i];
                 //console.log(matrRow);
