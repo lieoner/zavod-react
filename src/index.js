@@ -8,8 +8,8 @@ import { Guant } from './components/guant.js';
 
 const matrix = require('./matrix.json');
 
-const use_links = true;
-const flat_mode = false;
+const use_links = 'Y';
+const flat_mode = '';
 
 class StankiBegin extends React.Component {
     constructor(props) {
@@ -35,7 +35,7 @@ class StankiBegin extends React.Component {
 
         return (
             <div>
-                <Matrix matrix={matrix} key="1" title="Детали\Станки" foot={true} />
+                <Matrix matrix={matrix} key="1" title="Станки\Детали" foot={true} />
                 <br />
                 <Matrix matrix={queues} key="2" title="Очереди запуска" labels={labels} />
                 <br />
@@ -118,7 +118,7 @@ $(document).ready(function() {
             );
         });
     };
-    if (flat_mode) {
+    if (flat_mode === 'Y') {
         flatView(matrix);
     }
 });
