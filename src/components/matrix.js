@@ -291,7 +291,6 @@ class OptimQueue {
         elements.forEach(element => {
             queue.push(element.index);
         });
-        //console.log(elements);
         return queue;
     }
 
@@ -353,7 +352,7 @@ class OptimQueue {
                 stonkMatrix.push(stonkRow);
             }
 
-            return stonkMatrix;
+            return this.transp(stonkMatrix);
         };
 
         stonks = getRows(queue);

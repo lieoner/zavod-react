@@ -21,7 +21,6 @@ class Guant extends React.Component {
                 luminosity: 'light',
             });
         });
-
         this.legend = this.props.order.map((element, index) => {
             return (
                 <div>
@@ -34,6 +33,7 @@ class Guant extends React.Component {
 
         for (let i = 0; i < task_queue.length; i++) {
             let taskLine = task_queue[i];
+
             taskLine.forEach((queue, index) => {
                 let task = {
                     id: index + 'detal' + i,
@@ -46,7 +46,7 @@ class Guant extends React.Component {
                     name: 'Станок ' + (i + 1),
                     color: this.colors[index],
                 };
-                if (this.props.use_links) {
+                if (this.props.use_links === 'Y') {
                     let link = {
                         id: i,
                         start: index + 'detal' + i,
