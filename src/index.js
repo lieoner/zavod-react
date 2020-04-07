@@ -8,8 +8,8 @@ import { Guant } from './components/guant.js';
 
 const matrix = require('./matrix.json');
 
-const use_links = true;
-const flat_mode = false;
+const use_links = false;
+const flat_mode = true;
 
 class StankiBegin extends React.Component {
     constructor(props) {
